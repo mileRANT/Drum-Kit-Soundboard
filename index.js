@@ -8,33 +8,30 @@ for (var i = 0; i<document.querySelectorAll(".drum").length; i++){
 document.addEventListener("keydown", function(KeyBoardEvent){
     console.log(KeyBoardEvent);
     makeSound(KeyBoardEvent.key);
+    buttonAnimation(KeyBoardEvent.key);
 });
 
 function handleClick(){
-    
-
     //we can determine what was clicked by using the this object
 // in this way, we can identify and provide the appropriate sound clip
     // this.style.color = "white";
     var buttonInnerHTML = this.innerHTML;
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
 
     // var audio = new Audio("./sounds/tom-1.mp3");
     // audio.play();
 
-
 }
 
-// function handleKeyPress(event){
-//     alert("Test");
-//     console.log(event);
-//     makeSound(event.key);
+// function handleKeyPress(KeyBoardEvent){
+//     console.log(KeyBoardEvent);
+//     makeSound(KeyBoardEvent.key);
 // }
 
 function makeSound(key){
     console.log(key);
 
-    
     // alert("Test");
     //we can determine what was clicked by using the this object
 // in this way, we can identify and provide the appropriate sound clip
@@ -79,12 +76,16 @@ function makeSound(key){
         default:
             console.log(key);
     }
-
-    
-        // var audio = new Audio("./sounds/tom-1.mp3");
-        // audio.play();
 }
     
+function buttonAnimation(key){
+    var activeButton = document.querySelector("." + key);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        // activeButton.classList.toggle("pressed");
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
 
 //anonymous function example
 // document.querySelector("button").addEventListener("click", 
