@@ -2,8 +2,14 @@
 
 for (var i = 0; i<document.querySelectorAll(".drum").length; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
-
 }
+
+// event listener goes on the entire document
+document.addEventListener("keydown", function(KeyBoardEvent){
+    console.log(KeyBoardEvent);
+    makeSound(KeyBoardEvent.key);
+});
+
 function handleClick(){
     
 
@@ -11,7 +17,30 @@ function handleClick(){
 // in this way, we can identify and provide the appropriate sound clip
     // this.style.color = "white";
     var buttonInnerHTML = this.innerHTML;
-    switch (buttonInnerHTML){
+    makeSound(buttonInnerHTML);
+
+    // var audio = new Audio("./sounds/tom-1.mp3");
+    // audio.play();
+
+
+}
+
+// function handleKeyPress(event){
+//     alert("Test");
+//     console.log(event);
+//     makeSound(event.key);
+// }
+
+function makeSound(key){
+    console.log(key);
+
+    
+    // alert("Test");
+    //we can determine what was clicked by using the this object
+// in this way, we can identify and provide the appropriate sound clip
+    // this.style.color = "white";
+    // var buttonInnerHTML = this.innerHTML;
+    switch (key){
         case "w":
             var audio = new Audio("./sounds/tom-1.mp3");   
             audio.play();  
@@ -48,15 +77,14 @@ function handleClick(){
             break;
 
         default:
-            console.log(buttonInnerHTML)
+            console.log(key);
     }
 
-
-    // var audio = new Audio("./sounds/tom-1.mp3");
-    // audio.play();
-
-
+    
+        // var audio = new Audio("./sounds/tom-1.mp3");
+        // audio.play();
 }
+    
 
 //anonymous function example
 // document.querySelector("button").addEventListener("click", 
